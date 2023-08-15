@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
@@ -9,6 +9,22 @@ def hello_world():
 @app.route('/hi')
 def hi():
     return 'HI faruk'
+
+@app.route('/add', methods=["POST"])
+def add():
+    datadict = request.get_json()
+    if "y" not in datadict:
+        return "Error", 305
+    x = datadict["x"]
+    y = datadict["y"]
+
+    z = x + y
+
+    json = {
+        "z": z
+    }
+
+    return jsonify(json), 200
 
 # working with json
 @app.route('/bye')

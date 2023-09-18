@@ -1,0 +1,140 @@
+Create database:
+
+use "Database Name" # if database exit it switch to the database
+
+Example:
+use mydb
+
+=> To check your currently selected databasae, use the command = db
+=> If you want to check your databases lit, use the command = show dbs
+=> YOur created database (mydb) is not present in list. To display database, you need to insert at least one document into it:
+=> db.movie.insertOne({name:"faruk"})
+=> then show dbs
+=> In MongoDB default database is test. If you didn't create any database, then
+collections will be stored in test database.
+=> db.dropDatabase() # to delete the database
+
+############## ------------------- Collection Creation - Example--------------------- ###############
+Collection Creation - Example
+
+db.createCollection("mycollection")
+=> you can check the created collection by using the command = show collections
+
+=> THe following example shows the synatax of createCollection() method with few importand options -:
+db.createCollection("mycol", {capped:true, autoIndexId:true, size:6143800, max:10000})
+
+=> In MongoDB, you don't need to create collection. MongoDB creates collection automatically, when you insert some document.
+db.magicalCollection.insert({"name":"magicalCollection"})
+
+= show collections
+
+############## ------------------- Dropping a Collection --------------------- ###############
+MongoDB's db.collection.drop() is used to drop a collection from the database.
+Basic syntax of drop() command is as follows -
+db.COLLECTION_NAME.drop()
+
+Example = db.mycol.drop()
+show collections
+
+
+############## ------------------- Inserting Documents to a Collection --------------------- ###############
+
+=> To insert data into MongoDB collection, you need to use MongoDB"s insert() or save() method.
+=> The basic syntax of insert() command is as follows-
+db.COLLECTION_NAME.insert(document)
+
+## Inserting Documents to collectons example:
+db.mycollection.insert({title:"MongoDB OVerview", description:"MongoDB is no sql database",tags:['mongodb', 'database', 'NoSQL'],likes: 100})
+
+
+=> to insert multiple documents in a single query, you can pass an array of documents in insert() command.
+
+
+############## ------------------- Query Documents --------------------- ###############
+
+db.mycollection.insert({title:"MongoDB OVerview", description:"MongoDB is no sql database",tags:['mongodb', 'database', 'NoSQL'],likes: 100})
+db.mycollection.insert({title:"MongoDB Next", description:"MongoDB is no sql database thats true",tags:['mongodb', 'database', 'NoSQL'],likes: 500})
+
+=> To query data from MongoDB collection, you need to use MongoDB's methodd.
+=> The basic syntax of find() method is as follows
+db.COLLECTION_NAME.find()
+=> find() method will display all the documents in a non-structured way.
+=> To display the results in a foramtted way, you can use pretty() method.
+db.mycollection.find().pretty()
+
+=> Apart from find() there is findOne() method, that returns only one document.
+
+### Query Documens Filters
+Operation                       Syntax                          Example
+.........                       ......                          .......
+Equality                     {key:value}                           db.mycollection.find({"title":"MongoDB Next"})
+Less Than                   {key: {$lt:value}}                     db.mycollection.find({"likes":{$lt:100}})
+Less Than Equals            {key: {$lte:value}}                    db.mycollection.find({"likes":{$lte:100}})
+Greater Than                {key: {$gt:value}}                     db.mycollection.find({"likes":{$gt:100}})
+Greater Than Equals         {key: {$gte:value}}                    db.mycollection.find({"likes":{$gte:100}})
+Not equals                  {key: {$ne:value}}                     db.mycollection.find({"likes":{$ne:100}})
+
+
+#### AND in MongoDB
+query with two conditions:
+=> In the find method, if you pass multiple keys by separting them by ',' then MongoDB treats it as AND condition. Following is the basic syntax of AND-
+db.mycollection.find({$and:[{"likes":{$gte:100}},{"title":"MongoDB Next"}]})
+
+
+#### OR in MongoDB
+query with two conditions:
+=> To query documents based on the OR condition, you need to use $or keyword. Following is the basic syntax of OR-
+db.mycollection.find({$or:[{"likes":{$gte:100}},{"title":"MongoDB Next"}]})
+
+############## ------------------- Update Documents in MongoDB --------------------- ###############
+=> in update, it will just update the value like 100 likes to 200 likes
+=> in save, it will completely new documents
+
+update:
+by default it will update a single document. But to upadate all document we must add = multi:true
+db.mycollection.update({"title":"MongoDB Next"}, {$set:{"title":"MongoDB Update"}}, {multi:true})
+
+# deleting documents
+db.mycollection.remove({"title":"MongoDB Next"})
+
+# Projection Example:
+=> it will show limited field
+=> 1 is used to show the field
+=> 0 is used to hide the field
+db.mycollection.find({}, {"title":1, _id:0})
+
+### Limiting Records
+=> maximum number of data you want to see
+db.mycollection.find({}, {"title":1, _id:0}).limit(1)
+
+### Sorting Records
+=> 1 is for ascending order
+=> 0 is for descending order
+db.COLLECTION_NAME.find().sort({KEY:1})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

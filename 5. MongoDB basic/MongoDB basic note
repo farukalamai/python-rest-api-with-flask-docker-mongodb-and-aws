@@ -1,0 +1,42 @@
+Browser to server request and it's giving me response
+
+but when we close the brower the way it will remember us that username or password
+that's why database is required
+
+MongoDB:
+- is a cross platfrom, document oriented database
+
+MongoDB Server:
+- multiple database
+
+Collection:
+ - group of MongoDB documents
+
+Document:
+ - a set of key value pairs
+ 
+In MongoDB there is not concept of relationship.
+
+Advantages of MongoDB:
+- Number of fields, content, and size of the document can differ form one document to another.
+- Structure of single object is clear
+- No complex joins
+- Deep quer-ability
+- Tuning
+- Ease of scale-out
+- Using internal memory for storing the working set
+
+Why use MongoDB:
+- Document Oriented Storage
+- Index on any attribute
+- Auto-sharding
+- Rich queries
+- Professional support by MongoDB
+
+Where to use MongoDB:
+- Big Data
+- Content Management
+- Mobile and Social Infrastructure
+- User Data Management
+- Data Hub
+

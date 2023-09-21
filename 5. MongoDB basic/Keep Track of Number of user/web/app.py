@@ -17,7 +17,7 @@ UserNum = db["UserNum"]
 UserNum.insert_one({
     'num_of_users': 0
 })
-
+ 
 # Define a resource class 'Visit' to handle user visits
 class Visit(Resource):
     def get(self):

@@ -101,7 +101,7 @@ class Store(Resource):
                 "msg": "Sentence saved succesfully"
             }
         return jsonify(retJson)
-    
+     
 class Get(Resource):
     def post(self):
         postedData = request.get_json() 
